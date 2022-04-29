@@ -1,6 +1,5 @@
 package com.sdfomin.businesscard.generator
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import de.brendamour.jpasskit.PKBarcode
 import de.brendamour.jpasskit.PKField
 import de.brendamour.jpasskit.PKPass
@@ -32,16 +31,17 @@ class BusinessCardGenerator(
         name: String,
         telegram: String,
         profession: String,
+        website: String,
     ): ResponseEntity<Resource> {
-        generatePass(name, profession, telegram)
+        generatePass(name, profession, telegram, website)
         return loadPass(telegram)
     }
 
-    private fun generatePass(name: String, profession: String, telegram: String) {
+    private fun generatePass(name: String, profession: String, telegram: String, website: String) {
         val pass = PKPass.builder()
             .pass(
                 PKGenericPass.builder()
-                    .passType(PKPassType.PKStoreCard)
+                    .passType(PKPassType.PKGenericPass)
                     .primaryFieldBuilder(
                         PKField.builder()
                             .key("primary-name")
@@ -54,10 +54,10 @@ class BusinessCardGenerator(
                             .label("PROFESSION")
                             .value(profession)
                     )
-                    .auxiliaryFieldBuilder(
+                    .secondaryFieldBuilder(
                         PKField.builder()
                             .key("telegram")
-                            .textAlignment(PKTextAlignment.PKTextAlignmentRight)
+                            .textAlignment(PKTextAlignment.PKTextAlignmentLeft)
                             .label("TELEGRAM")
                             .value("@$telegram")
                     )
@@ -66,6 +66,19 @@ class BusinessCardGenerator(
                             .key("back-telegram")
                             .label("TELEGRAM")
                             .attributedValue("<a href='https://t.me/$telegram'>@$telegram</a>")
+                    )
+                    .auxiliaryFieldBuilder(
+                        PKField.builder()
+                            .key("website")
+                            .textAlignment(PKTextAlignment.PKTextAlignmentLeft)
+                            .label("WEBSITE")
+                            .value(website)
+                    )
+                    .backFieldBuilder(
+                        PKField.builder()
+                            .key("back-website")
+                            .label("WEBSITE")
+                            .attributedValue("<a href='https://$website'>$website</a>")
                     )
             )
             .barcodeBuilder(

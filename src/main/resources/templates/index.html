@@ -29,6 +29,18 @@
                                th:name="telegram">
                     </div>
                 </div>
+                <div class="form-group mb-3">
+                    <label for="websiteInput">Website</label>
+                    <div class="input-group">
+                        <div class="input-group-text">https://</div>
+                        <input type="text" class="form-control" id="websiteInput" placeholder="yandex.ru"
+                               th:name="website">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="profilePictureInput" class="form-label">Your profile picture</label>
+                    <input class="form-control" type="file" id="profilePictureInput" th:name="profilePicture">
+                </div>
                 <button type="submit" class="btn btn-primary">Generate</button>
             </form>
         </div>

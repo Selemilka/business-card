@@ -2,7 +2,7 @@ package com.sdfomin.businesscard.controller
 
 import com.sdfomin.businesscard.generator.BusinessCardGenerator
 import org.springframework.core.io.Resource
-import org.springframework.http.*
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,10 +25,12 @@ class GeneratorController(
         @RequestParam(value = "name") name: String,
         @RequestParam(value = "telegram") telegram: String,
         @RequestParam(value = "profession") profession: String,
+        @RequestParam(value = "website") website: String,
     ): ResponseEntity<Resource> =
         businessCardGenerator.generate(
             name = name,
             telegram = telegram,
             profession = profession,
+            website = website,
         )
 }
