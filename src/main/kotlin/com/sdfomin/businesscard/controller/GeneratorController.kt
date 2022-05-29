@@ -1,5 +1,6 @@
 package com.sdfomin.businesscard.controller
 
+import com.sdfomin.businesscard.entity.Contacts
 import com.sdfomin.businesscard.generator.BusinessCardGenerator
 import org.springframework.core.io.Resource
 import org.springframework.http.ResponseEntity
@@ -22,15 +23,16 @@ class GeneratorController(
 
     @PostMapping(value = ["/generate"])
     fun generate(
-        @RequestParam(value = "name") name: String,
-        @RequestParam(value = "telegram") telegram: String,
-        @RequestParam(value = "profession") profession: String,
-        @RequestParam(value = "website") website: String,
+//        @RequestParam(value = "name") name: String,
+//        @RequestParam(value = "telegram") telegram: String,
+//        @RequestParam(value = "profession") profession: String,
+//        @RequestParam(value = "website") website: String,
+        contacts: Contacts,
     ): ResponseEntity<Resource> =
         businessCardGenerator.generate(
-            name = name,
-            telegram = telegram,
-            profession = profession,
-            website = website,
+            name = contacts.name,
+            telegram = contacts.telegram!!,
+            profession = "profession",
+            website = contacts.website!!,
         )
 }
