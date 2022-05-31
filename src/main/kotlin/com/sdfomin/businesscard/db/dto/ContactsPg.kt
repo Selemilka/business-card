@@ -1,13 +1,8 @@
-package com.sdfomin.businesscard.dto
+package com.sdfomin.businesscard.db.dto
 
 import com.sdfomin.businesscard.entity.Contacts
 import org.springframework.data.jpa.repository.JpaRepository
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "contact")
@@ -17,8 +12,11 @@ class ContactsPg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0
 
+    @Column(name = "is_active")
+    val isActive: Boolean = false
+
     @Column(name = "name")
-    var name: String = ""
+    var name: String? = null
 
     @Column(name = "website")
     var website: String? = null
@@ -32,9 +30,6 @@ class ContactsPg {
     @Column(name = "telegram")
     var telegram: String? = null
 
-    @Column(name = "whatsapp")
-    var whatsapp: String? = null
-
     constructor()
 
     constructor(contacts: Contacts) {
@@ -44,9 +39,9 @@ class ContactsPg {
         this.email = contacts.email
         this.phone = contacts.phone
         this.telegram = contacts.telegram
-        this.whatsapp = contacts.whatsapp
     }
 }
 
-interface ContactsRepo : JpaRepository<ContactsPg, Int> {
-}
+fun Contacts.convert() = ContactsPg(this)
+
+interface ContactsRepo : JpaRepository<ContactsPg, Int>

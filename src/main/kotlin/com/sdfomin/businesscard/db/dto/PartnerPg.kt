@@ -1,4 +1,4 @@
-package com.sdfomin.businesscard.dto
+package com.sdfomin.businesscard.db.dto
 
 import com.sdfomin.businesscard.entity.Partner
 import org.springframework.data.jpa.repository.JpaRepository

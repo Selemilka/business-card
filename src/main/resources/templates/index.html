@@ -17,31 +17,114 @@
                     <input type="text" class="form-control" id="nameInput" placeholder="John Smith"
                            th:name="contacts.name">
                 </div>
-<!--                <div class="form-group mb-3">-->
-<!--                    <label for="professionInput">Profession</label>-->
-<!--                    <input type="text" class="form-control" id="professionInput" placeholder="Developer"-->
-<!--                           th:name="contacts.">-->
-<!--                </div>-->
+                <!--                <div class="form-group mb-3">-->
+                <!--                    <label for="professionInput">Profession</label>-->
+                <!--                    <input type="text" class="form-control" id="professionInput" placeholder="Developer"-->
+                <!--                           th:name="contacts.">-->
+                <!--                </div>-->
                 <div class="form-group mb-3">
-                    <label for="telegramInput">Telegram</label>
+                    <label for="handleInput">Handle</label>
                     <div class="input-group">
                         <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="telegramInput" placeholder="JohnSmith"
-                               th:name="contacts.telegram">
+                        <input type="text" class="form-control" id="handleInput" placeholder="" th:name="handle">
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="websiteInput">Website</label>
+                    <label for="descriptionInput">description</label>
                     <div class="input-group">
-                        <div class="input-group-text">https://</div>
-                        <input type="text" class="form-control" id="websiteInput" placeholder="yandex.ru"
-                               th:name="contacts.website">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="descriptionInput" placeholder="" th:name="description">
                     </div>
                 </div>
-<!--                <div class="mb-3">-->
-<!--                    <label for="profilePictureInput" class="form-label">Your profile picture</label>-->
-<!--                    <input class="form-control" type="file" id="profilePictureInput" th:name="profilePicture">-->
-<!--                </div>-->
+
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="businessIsActiveFlex" th:name="businessIsActive">
+                    <label class="form-check-label" for="businessIsActiveFlex">Is Business Active</label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="businessNameInput">businessName</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="businessNameInput" placeholder="" th:name="businessName">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="businessWebsiteInput">businessWebsite</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="businessWebsiteInput" placeholder="" th:name="businessWebsite">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="businessEmailInput">businessEmail</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="businessEmailInput" placeholder="" th:name="businessEmail">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="businessPhoneInput">businessPhone</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="businessPhoneInput" placeholder="" th:name="businessPhone">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="businessTelegramInput">businessTelegram</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="businessTelegramInput" placeholder="" th:name="businessTelegram">
+                    </div>
+                </div>
+
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="personIsActiveFlex" th:name="personIsActive">
+                    <label class="form-check-label" for="personIsActiveFlex">Is Person Active</label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="personNameInput">personName</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="personNameInput" placeholder="" th:name="personName">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="personWebsiteInput">personWebsite</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="personWebsiteInput" placeholder="" th:name="personWebsite">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="personEmailInput">personEmail</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="personEmailInput" placeholder="" th:name="personEmail">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="personPhoneInput">personPhone</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="personPhoneInput" placeholder="" th:name="personPhone">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="personTelegramInput">personTelegram</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="personTelegramInput" placeholder="" th:name="personTelegram">
+                    </div>
+                </div>
+
+                <!--                <div class="mb-3">-->
+                <!--                    <label for="profilePictureInput" class="form-label">Your profile picture</label>-->
+                <!--                    <input class="form-control" type="file" id="profilePictureInput" th:name="profilePicture">-->
+                <!--                </div>-->
                 <button type="submit" class="btn btn-primary">Generate</button>
             </form>
         </div>

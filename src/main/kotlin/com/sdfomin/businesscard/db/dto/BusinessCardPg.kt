@@ -1,7 +1,9 @@
-package com.sdfomin.businesscard.dto
+package com.sdfomin.businesscard.db.dto
 
 import com.sdfomin.businesscard.entity.BusinessCard
+import com.sdfomin.businesscard.entity.Contacts
 import org.springframework.data.jpa.repository.JpaRepository
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -22,9 +24,9 @@ class BusinessCardPg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0
 
-    @ManyToOne
-    @JoinColumn(name = "partner_id")
-    var partner: PartnerPg = PartnerPg()
+//    @ManyToOne
+//    @JoinColumn(name = "partner_id")
+//    var partner: PartnerPg = PartnerPg()
 
     @Column(name = "handle")
     var handle: String = ""
@@ -35,11 +37,11 @@ class BusinessCardPg {
     @Column(name = "description")
     var description: String? = null
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "business_contacts_id")
     var businessContacts: ContactsPg = ContactsPg()
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "person_contacts_id")
     var personContacts: ContactsPg = ContactsPg()
 
@@ -55,5 +57,6 @@ class BusinessCardPg {
     }
 }
 
-interface BusinessCardRepo : JpaRepository<BusinessCardPg, Int> {
-}
+fun BusinessCard.convert() = BusinessCardPg(this)
+
+interface BusinessCardRepo : JpaRepository<BusinessCardPg, Int>

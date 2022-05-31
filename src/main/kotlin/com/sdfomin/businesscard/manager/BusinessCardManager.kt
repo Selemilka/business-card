@@ -1,5 +1,8 @@
-package com.sdfomin.businesscard.generator
+package com.sdfomin.businesscard.manager
 
+import com.sdfomin.businesscard.db.service.BusinessCardService
+import com.sdfomin.businesscard.entity.BusinessCard
+import com.sdfomin.businesscard.entity.Contacts
 import de.brendamour.jpasskit.PKBarcode
 import de.brendamour.jpasskit.PKField
 import de.brendamour.jpasskit.PKPass
@@ -22,8 +25,9 @@ import java.io.File
 import java.nio.charset.Charset
 
 @Component
-class BusinessCardGenerator(
+class BusinessCardManager(
     val resourceLoader: ResourceLoader,
+    private val businessCardService: BusinessCardService,
     @Value("\${businesscard.resources}") val passPath: String,
 ) {
 
@@ -35,6 +39,12 @@ class BusinessCardGenerator(
     ): ResponseEntity<Resource> {
         generatePass(name, profession, telegram, website)
         return loadPass(telegram)
+    }
+
+    fun createCard(
+        businessCard: BusinessCard,
+    ) {
+        businessCardService.save(businessCard)
     }
 
     private fun generatePass(name: String, profession: String, telegram: String, website: String) {

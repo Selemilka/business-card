@@ -7,13 +7,13 @@ CREATE TABLE IF NOT EXISTS partner
 
 CREATE TABLE IF NOT EXISTS contact
 (
-    contacts_id serial  NOT NULL,
-    name        varchar NOT NULL,
+    contacts_id serial NOT NULL,
+    is_active   boolean,
+    name        varchar,
     website     varchar,
     email       varchar,
     phone       varchar,
     telegram    varchar,
-    whatsapp    varchar,
     PRIMARY KEY (contacts_id)
 );
 
@@ -28,3 +28,13 @@ CREATE TABLE IF NOT EXISTS business_card
     person_contacts_id   integer REFERENCES contact (contacts_id),
     PRIMARY KEY (business_card_id)
 );
+
+CREATE TABLE IF NOT EXISTS users
+(
+    user_id  serial NOT NULL,
+    username varchar,
+    password varchar,
+    active   boolean,
+    roles    varchar,
+    PRIMARY KEY (user_id)
+)
