@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS users
     user_id  serial NOT NULL,
     username varchar NOT NULL,
     password varchar NOT NULL,
-    active   boolean,
-    roles    varchar,
+    active   boolean NOT NULL,
+    roles    varchar NOT NULL,
     PRIMARY KEY (user_id)
 )
