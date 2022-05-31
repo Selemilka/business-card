@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS business_card
 CREATE TABLE IF NOT EXISTS users
 (
     user_id  serial NOT NULL,
-    username varchar,
-    password varchar,
+    username varchar NOT NULL,
+    password varchar NOT NULL,
     active   boolean,
     roles    varchar,
     PRIMARY KEY (user_id)
