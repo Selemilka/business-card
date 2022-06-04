@@ -1,6 +1,6 @@
-package com.sdfomin.businesscard.security
+package com.sdfomin.businesscard.configuration.security
 
-import com.sdfomin.businesscard.security.model.SecurityUserDetails
+import com.sdfomin.businesscard.configuration.security.model.SecurityUserDetails
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

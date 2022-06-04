@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS apple_card;
+
 DROP TABLE IF EXISTS business_card;
 
 DROP TABLE IF EXISTS contact;

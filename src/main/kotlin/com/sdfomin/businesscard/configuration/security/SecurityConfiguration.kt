@@ -1,4 +1,4 @@
-package com.sdfomin.businesscard.security
+package com.sdfomin.businesscard.configuration.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
@@ -27,6 +27,7 @@ class SecurityConfiguration(
             .antMatchers("/").permitAll()
             .and().csrf().disable()
             .formLogin()
+            .loginPage("/login")
     }
 
     @get:Bean

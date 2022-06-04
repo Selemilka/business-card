@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+
+    <!-- My style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" th:href="@{css/style.css}"/>
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>Card</title>
+</head>
+
+<body>
+
+<div class="container d-flex justify-content-center h-100 align-items-center p-0">
+    <div class="row bg-white w-100">
+        <div class="col border rounded p-4 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="row d-flex flex-column justify-content-center align-items-center text-center w-100">
+
+                <!-- Button trigger modal -->
+                <button class="row btn btn-primary my-2 share" type="button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                    Поделиться
+                </button>
+
+                <div class="row d-flex justify-content-center">
+                    <img class="my-2 center-cropped " src="/static/images/apple-button-one-line.png"
+                         th:src="@{q/profile.jpg}" alt="Profile Picture"/>
+                </div>
+
+                <div class="row my-2" th:if="${card.businessName != null}">
+                    <h1>
+                        <span th:text="${card.businessName}">Company Name</span>
+                    </h1>
+                </div>
+
+                <div class="row my-2" th:if="${card.personName != null}">
+                    <h2>
+                        <span th:text="${card.personName}">Person Name</span>
+                    </h2>
+                </div>
+
+                <div class="row my-2">
+                    <h5>
+                        <span th:text="${card.description}">Some information about company holder and other useful info in description</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center align-items-center text-center">
+                <img class="my-2 contacts row apple" src="/static/images/apple-button-one-line.png"
+                     th:src="@{images/apple-button-one-line.png}" alt="Apple Wallet"/>
+
+                <div th:if="${card.business.isActive}" class="d-flex justify-content-center contacts row">
+                    <p></p>
+                    <h5>Бизнес-контакты</h5>
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.business.phone)}">
+                        <img class="col-2" th:src="@{images/contacts/phone-logo.svg}"
+                             src="/static/images/contacts/phone-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.business.phone}">+7-800-555-35-35</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.business.email)}">
+                        <img class="col-2" th:src="@{images/contacts/email-logo.svg}"
+                             src="/static/images/contacts/email-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.business.email}">axolotl@gmail.com</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.business.website)}">
+                        <img class="col-2" th:src="@{images/contacts/internet-logo.svg}"
+                             src="/static/images/contacts/internet-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.business.website}">selemilka.ru</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.business.telegram)}">
+                        <img class="col-2" th:src="@{images/contacts/telegram-logo.svg}"
+                             src="/static/images/contacts/telegram-logo.svg"/>
+                        <h4 class="col-10">@<span th:text="${card.business.telegram}">telegram</span></h4>
+                    </div>
+                </div>
+
+                <div th:if="${card.person.isActive}" class="d-flex justify-content-center contacts row">
+                    <p></p>
+                    <h5>Личные контакты</h5>
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.person.phone)}">
+                        <img class="col-2" th:src="@{images/contacts/phone-logo.svg}"
+                             src="/static/images/contacts/phone-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.person.phone}">+7-800-555-35-35</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.person.email)}">
+                        <img class="col-2" th:src="@{images/contacts/email-logo.svg}"
+                             src="/static/images/contacts/email-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.person.email}">axolotl@gmail.com</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.person.website)}">
+                        <img class="col-2" th:src="@{images/contacts/internet-logo.svg}"
+                             src="/static/images/contacts/internet-logo.svg"/>
+                        <h4 class="col-10"><span th:text="${card.person.website}">selemilka.ru</span></h4>
+                    </div>
+
+                    <div class="my-2 border rounded contacts d-flex justify-content-center align-items-center"
+                         th:if="${!#strings.isEmpty(card.person.telegram)}">
+                        <img class="col-2" th:src="@{images/contacts/telegram-logo.svg}"
+                             src="/static/images/contacts/telegram-logo.svg"/>
+                        <h4 class="col-10">@<span th:text="${card.person.telegram}">telegram</span></h4>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Selemilka</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-modal" src="/static/images/apple-button-one-line.png"
+                     th:src="@{q/profile.jpg}" alt="Profile Picture"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

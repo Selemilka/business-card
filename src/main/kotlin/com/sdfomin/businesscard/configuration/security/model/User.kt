@@ -1,5 +1,6 @@
-package com.sdfomin.businesscard.security.model
+package com.sdfomin.businesscard.configuration.security.model
 
+import org.springframework.data.jpa.repository.JpaRepository
 import javax.persistence.*
 
 @Entity
@@ -23,4 +24,6 @@ class User {
     var roles: String = "ROLE_USER"
 }
 
-
+interface UserRepo : JpaRepository<User, Int> {
+    fun findByUsername(username: String): User
+}

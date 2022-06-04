@@ -13,7 +13,7 @@ class ContactsPg {
     var id: Int = 0
 
     @Column(name = "is_active")
-    val isActive: Boolean = false
+    var isActive: Boolean = false
 
     @Column(name = "name")
     var name: String? = null
@@ -34,6 +34,7 @@ class ContactsPg {
 
     constructor(contacts: Contacts) {
         this.id = contacts.id
+        this.isActive = contacts.isActive
         this.name = contacts.name
         this.website = contacts.website
         this.email = contacts.email

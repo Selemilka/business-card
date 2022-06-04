@@ -2,7 +2,6 @@ package com.sdfomin.businesscard.manager
 
 import com.sdfomin.businesscard.db.service.BusinessCardService
 import com.sdfomin.businesscard.entity.BusinessCard
-import com.sdfomin.businesscard.entity.Contacts
 import de.brendamour.jpasskit.PKBarcode
 import de.brendamour.jpasskit.PKField
 import de.brendamour.jpasskit.PKPass
@@ -41,9 +40,7 @@ class BusinessCardManager(
         return loadPass(telegram)
     }
 
-    fun createCard(
-        businessCard: BusinessCard,
-    ) {
+    fun createCard(businessCard: BusinessCard) {
         businessCardService.save(businessCard)
     }
 

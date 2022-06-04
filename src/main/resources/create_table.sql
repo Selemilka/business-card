@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users
     active   boolean NOT NULL,
     roles    varchar NOT NULL,
     PRIMARY KEY (user_id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS contact
 (
@@ -30,4 +30,12 @@ CREATE TABLE IF NOT EXISTS business_card
     business_contacts_id integer REFERENCES contact (contacts_id),
     person_contacts_id   integer REFERENCES contact (contacts_id),
     PRIMARY KEY (business_card_id)
+);
+
+CREATE TABLE IF NOT EXISTS apple_card
+(
+    business_card_id integer,
+    font_color varchar NOT NULL,
+    background_color varchar NOT NULL
+--     PRIMARY KEY (business_card_id)
 );

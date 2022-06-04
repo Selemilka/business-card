@@ -1,9 +1,8 @@
-package com.sdfomin.businesscard.security
+package com.sdfomin.businesscard.configuration.security
 
-import com.sdfomin.businesscard.security.model.User
+import com.sdfomin.businesscard.configuration.security.model.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository : JpaRepository<User, Int> {
     fun findByUsername(username: String): User?
 }
-

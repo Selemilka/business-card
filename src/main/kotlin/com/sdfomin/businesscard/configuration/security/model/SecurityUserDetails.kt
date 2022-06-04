@@ -1,4 +1,4 @@
-package com.sdfomin.businesscard.security.model
+package com.sdfomin.businesscard.configuration.security.model
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

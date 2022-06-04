@@ -1,4 +1,4 @@
-package com.sdfomin.businesscard.security
+package com.sdfomin.businesscard.configuration.security
 
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.GetMapping

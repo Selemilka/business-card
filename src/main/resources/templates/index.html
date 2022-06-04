@@ -1,134 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Generate Pass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+
+    <!-- My style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" th:href="@{css/style.css}"/>
+
+
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>My cards</title>
 </head>
+
 <body>
+<div class="container d-flex justify-content-center h-100 align-items-center p-0">
+    <div class="row bg-white w-100">
+        <div class="col border rounded p-4 d-flex flex-column justify-content-center align-items-center">
 
-<div class="container" style="margin-top: 2%;">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <form method="post" th:action="@{/generate}">
-                <div class="form-group mb-3">
-                    <label for="nameInput">Name</label>
-                    <input type="text" class="form-control" id="nameInput" placeholder="John Smith"
-                           th:name="contacts.name">
-                </div>
-                <!--                <div class="form-group mb-3">-->
-                <!--                    <label for="professionInput">Profession</label>-->
-                <!--                    <input type="text" class="form-control" id="professionInput" placeholder="Developer"-->
-                <!--                           th:name="contacts.">-->
-                <!--                </div>-->
-                <div class="form-group mb-3">
-                    <label for="handleInput">Handle</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="handleInput" placeholder="" th:name="handle">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="descriptionInput">description</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="descriptionInput" placeholder="" th:name="description">
-                    </div>
-                </div>
+            <button class="btn btn-success">Создать новую карточку</button>
 
+            <table>
+                <tr th:each="card: ${cards}">
+                    <td th:text="${card.handle}"></td>
+                    <td th:text="${card.handle}"></td>
+                </tr>
+            </table>
 
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="businessIsActiveFlex" th:name="businessIsActive">
-                    <label class="form-check-label" for="businessIsActiveFlex">Is Business Active</label>
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="businessNameInput">businessName</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="businessNameInput" placeholder="" th:name="businessName">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="businessWebsiteInput">businessWebsite</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="businessWebsiteInput" placeholder="" th:name="businessWebsite">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="businessEmailInput">businessEmail</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="businessEmailInput" placeholder="" th:name="businessEmail">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="businessPhoneInput">businessPhone</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="businessPhoneInput" placeholder="" th:name="businessPhone">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="businessTelegramInput">businessTelegram</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="businessTelegramInput" placeholder="" th:name="businessTelegram">
-                    </div>
-                </div>
-
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="personIsActiveFlex" th:name="personIsActive">
-                    <label class="form-check-label" for="personIsActiveFlex">Is Person Active</label>
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="personNameInput">personName</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="personNameInput" placeholder="" th:name="personName">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="personWebsiteInput">personWebsite</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="personWebsiteInput" placeholder="" th:name="personWebsite">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="personEmailInput">personEmail</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="personEmailInput" placeholder="" th:name="personEmail">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="personPhoneInput">personPhone</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="personPhoneInput" placeholder="" th:name="personPhone">
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="personTelegramInput">personTelegram</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="personTelegramInput" placeholder="" th:name="personTelegram">
-                    </div>
-                </div>
-
-                <!--                <div class="mb-3">-->
-                <!--                    <label for="profilePictureInput" class="form-label">Your profile picture</label>-->
-                <!--                    <input class="form-control" type="file" id="profilePictureInput" th:name="profilePicture">-->
-                <!--                </div>-->
-                <button type="submit" class="btn btn-primary">Generate</button>
-            </form>
         </div>
     </div>
 </div>
+
 </body>
 </html>

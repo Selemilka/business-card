@@ -1,0 +1,78 @@
+@media {
+    .register {
+        max-width: 400px;
+    }
+
+    .container {
+        max-width: 680px;
+    }
+}
+
+@media (min-width: 0px) {
+    .container {
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 680px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 680px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 680px;
+    }
+}
+
+img.apple {
+    height: auto;
+    width: 420px;
+}
+
+.center-cropped {
+    object-fit: cover;
+    object-position: center;
+    height: 240px;
+    width: 260px;
+
+    border-radius: 50%;
+
+}
+
+img.img-modal {
+    object-fit: contain;
+    width: 300px;
+    height: 300px;
+}
+
+.modal-dialog {
+    max-width: 330px;
+}
+
+.contacts {
+    width: 420px;
+}
+
+img.contactsfit {
+    /*object-fit: fill;*/
+    width: 30px;
+    height: 30px;
+}
+
+button.share {
+    width: 400px;
+}

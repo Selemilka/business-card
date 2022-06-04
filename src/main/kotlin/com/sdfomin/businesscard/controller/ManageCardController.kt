@@ -1,29 +1,42 @@
 package com.sdfomin.businesscard.controller
 
+import com.sdfomin.businesscard.db.service.UserService
+import com.sdfomin.businesscard.entity.AppleCardAttributes
 import com.sdfomin.businesscard.entity.BusinessCard
 import com.sdfomin.businesscard.entity.Contacts
 import com.sdfomin.businesscard.manager.BusinessCardManager
-import org.springframework.core.io.Resource
-import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.ModelAndView
+import org.springframework.web.servlet.view.RedirectView
+import java.security.Principal
 
 
 @Controller
-class GeneratorController(
+class ManageCardController(
     private val businessCardManager: BusinessCardManager,
+    private val userService: UserService,
 ) {
 
-    @GetMapping(value = [""])
-    fun main(): ModelAndView {
-        return ModelAndView("index")
-    }
+//    @PostMapping(value = ["/customize"])
+//    fun customize(
+//        @RequestParam(value = "fontColor") fontColor: String,
+//        @RequestParam(value = "backgroundColor") backgroundColor: String,
+//    ): ModelAndView {
+//        return ModelAndView("customize")
+//    }
 
-    @PostMapping(value = ["/generate"])
-    fun generate(
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping(value = ["/manage/create"])
+    fun create(): ModelAndView = ModelAndView("card/create")
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostMapping(value = ["/manage/create"])
+    fun create(
+        principal: Principal?,
         @RequestParam(value = "handle") handle: String,
 //        @RequestParam(value = "logoImage") logoImage: String?, TODO logoImage
         @RequestParam(value = "description") description: String,
@@ -39,9 +52,10 @@ class GeneratorController(
         @RequestParam(value = "personEmail", required = false) personEmail: String?,
         @RequestParam(value = "personPhone", required = false) personPhone: String?,
         @RequestParam(value = "personTelegram", required = false) personTelegram: String?,
-    ): ModelAndView {
+    ): RedirectView {
         businessCardManager.createCard(
             businessCard = BusinessCard(
+                userId = userService.loadUser(principal!!.name).id,
                 handle = handle,
                 logoImage = null, // TODO logoImage
                 description = description,
@@ -61,9 +75,10 @@ class GeneratorController(
                     phone = personPhone,
                     telegram = personTelegram,
                 ),
+                appleCardAttributes = AppleCardAttributes()
             )
         )
-        return ModelAndView("index")
+        return RedirectView("/manage/list")
     }
 
 //    @PostMapping(value = ["/download"])
