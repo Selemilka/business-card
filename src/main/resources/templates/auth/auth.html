@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" href="/static/css/style.css"/>
 
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
@@ -35,7 +35,7 @@
         }
 
         body {
-            background-color: #ccff90;
+            background-color: #426D54;
         }
 
     </style>
@@ -45,7 +45,7 @@
 <body>
 <div class="container d-flex justify-content-center h-100 align-items-center p-0">
     <div class="row bg-white w-100">
-        <div class="col border rounded p-4">
+        <div class="col backform border rounded p-4">
 
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item"><a class="nav-link active" href="#login" role="tab" data-toggle="tab">Логин</a>
@@ -56,13 +56,13 @@
 
             <div class="tab-content d-flex justify-content-center">
 
-                <div role="tabpanel" class="register tab-pane col border rounded p-4 active" id="login">
+                <div role="tabpanel" class="register contact tab-pane col border rounded p-4 active" id="login">
                     <h3 class="text-center mb-3">Вход</h3>
                     <form method="post" th:action="@{/login}">
 
                         <!-- Spring Security alerts -->
                         <div th:if="${param.error}" class="alert alert-danger">
-                            фыва фыва фыва фыва фыва фыва фыв афыв афыв аыф афыва фыа фыа фыв афыва фыва фыа фыа фыа Неверное имя пользователя или пароль.
+                            Неверное имя пользователя или пароль.
                         </div>
                         <div th:if="${param.logout}" class="alert alert-success">
                             Вы вышли из аккаунта.
@@ -90,7 +90,7 @@
                     </form>
                 </div>
 
-                <div role="tabpanel" class="register tab-pane col border rounded p-4" id="register">
+                <div role="tabpanel" class="register tab-pane col border rounded p-4 contact" id="register">
                     <h3 class="text-center mb-3">Регистрация</h3>
                     <form method="post" th:action="@{/auth/register}">
                         <div class="form-group my-2">

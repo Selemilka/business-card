@@ -55,12 +55,12 @@ img.apple {
 
 img.img-modal {
     object-fit: contain;
-    width: 300px;
-    height: 300px;
+    max-width: 360px;
+    max-height: 360px;
 }
 
 .modal-dialog {
-    max-width: 330px;
+    max-width: 500px;
 }
 
 .contacts {
@@ -75,4 +75,30 @@ img.contactsfit {
 
 button.share {
     width: 400px;
+}
+
+td.card {
+    width: 400px;
+}
+
+.qr-code {
+    max-width: 200px;
+    margin: 10px;
+}
+
+div.background {
+    background-color: #426D54;
+}
+
+div.backform {
+    background-color: #E1EDBD;
+}
+
+div.contact {
+    background-color: #B0CF98;
+}
+
+.form-check-input:checked {
+    background-color: #426D54;
+    border-color: #82B068;
 }

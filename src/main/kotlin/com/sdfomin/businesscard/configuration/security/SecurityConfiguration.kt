@@ -23,8 +23,9 @@ class SecurityConfiguration(
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
             .antMatchers("/manage/admin").hasRole("ADMIN")
-            .antMatchers("/manage/user").hasAnyRole("ADMIN", "USER")
-            .antMatchers("/").permitAll()
+//            .antMatchers("/manage/**").hasAnyRole("ADMIN", "USER")
+            .antMatchers("/").hasAnyRole("ADMIN", "USER")
+            .antMatchers("/*").permitAll()
             .and().csrf().disable()
             .formLogin()
             .loginPage("/login")

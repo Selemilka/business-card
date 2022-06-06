@@ -10,11 +10,8 @@
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
-
     <!-- My style -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" th:href="@{css/style.css}"/>
-
-
 
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
@@ -25,20 +22,35 @@
             crossorigin="anonymous"></script>
 
     <title>My cards</title>
+
+    <style>
+        body {
+            background-color: #426D54;
+        }
+    </style>
+
 </head>
 
 <body>
 <div class="container d-flex justify-content-center h-100 align-items-center p-0">
     <div class="row bg-white w-100">
-        <div class="col border rounded p-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col backform border rounded p-4 d-flex flex-column justify-content-center align-items-center">
 
-            <button class="btn btn-success">Создать новую карточку</button>
+            <a class="row my-2 btn btn-success" href="/manage/create">Создать новую карточку</a>
 
-            <table>
-                <tr th:each="card: ${cards}">
-                    <td th:text="${card.handle}"></td>
-                    <td th:text="${card.handle}"></td>
+            <table class="row d-flex flex-column justify-content-center align-items-center">
+                <tr class="my-2 row d-flex flex-column justify-content-center align-items-center"
+                    th:each="card: ${cards}">
+                    <div class="my-2 border rounded contact card d-flex flex-row justify-content-center align-items-center">
+                        <div class="p-1 text-center"><a th:href="${card.handle}">/<span
+                                th:text="${card.handle}">handle</span></a></div>
+                        <div class="p-2"></div>
+                        <div class="p-1"><a class="btn btn-primary">Печать</a></div>
+                        <div class="p-1"><a class="btn btn-primary">Редактировать</a></div>
+                        <div class="p-1"><a class="btn btn-danger">Удалить</a></div>
+                    </div>
                 </tr>
+
             </table>
 
         </div>

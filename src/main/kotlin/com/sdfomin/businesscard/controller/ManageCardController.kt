@@ -4,7 +4,10 @@ import com.sdfomin.businesscard.db.service.UserService
 import com.sdfomin.businesscard.entity.AppleCardAttributes
 import com.sdfomin.businesscard.entity.BusinessCard
 import com.sdfomin.businesscard.entity.Contacts
+import com.sdfomin.businesscard.manager.AppleCardManager
 import com.sdfomin.businesscard.manager.BusinessCardManager
+import org.springframework.core.io.Resource
+import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
@@ -29,7 +32,6 @@ class ManageCardController(
 //        return ModelAndView("customize")
 //    }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping(value = ["/manage/create"])
     fun create(): ModelAndView = ModelAndView("card/create")
 
@@ -38,7 +40,7 @@ class ManageCardController(
     fun create(
         principal: Principal?,
         @RequestParam(value = "handle") handle: String,
-//        @RequestParam(value = "logoImage") logoImage: String?, TODO logoImage
+//        @RequestParam(value = "logoImage") logoImage: MultipartFile?, TODO logoImage
         @RequestParam(value = "description") description: String,
         @RequestParam(value = "businessIsActive", required = false) businessIsActive: String?,
         @RequestParam(value = "businessName", required = false) businessName: String?,
@@ -81,6 +83,4 @@ class ManageCardController(
         return RedirectView("/manage/list")
     }
 
-//    @PostMapping(value = ["/download"])
-//    fun downloadPass() : ResponseEntity<Resource> = businessCardManager.generate()
 }
